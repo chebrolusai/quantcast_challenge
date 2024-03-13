@@ -22,3 +22,6 @@ util.check_if_filespec_exists([dParsedArguments.get('fileSpec')])
 
 # Check for vaalid input option
 util.check_for_valid_input_options([dParsedArguments.get('option')])
+
+# Check for date format and if it is valid
+util.validate_date_format(dParsedArguments['date'])
