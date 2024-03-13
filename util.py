@@ -1,7 +1,6 @@
 import re
 import os
 import data_integrity
-import time
 
 ALLOWED_OPTIONS_CONSTANT     = {'d'}
 MONTHS_WITH_30_DAYS_CONSTANT = {2,4,6,9,11}
@@ -80,3 +79,13 @@ def validate_date_format(date):
     
     else:
         data_integrity.failed(errorString="Please give a valid date in the format YYYY-MM-DD",exitCode=2)
+
+
+
+def validate_utc_timestamp(timeStamp) -> bool:
+
+    if re.match(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}', timeStamp):
+        return True
+    
+    else:
+        return False
