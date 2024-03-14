@@ -7,24 +7,32 @@ READ_ONLY_CONSTANT = 'r'
 
 if sys.argv.__len__() < 4:
     
-    data_integrity.failed("Specify the log file, and date with -d",2)
+    data_integrity.failed("Specify both the log file, and date with -d",2)
 
 if sys.argv.__len__() > 4:
     
-    data_integrity.failed("Invalid number of arguments passed",2)
+    data_integrity.failed("Too many number of arguments passed. Specify only the log filespec, and date with -d ",2)
 
 
 # Parse input arguments
 dParsedArguments = util.parse_command_line_arguments(sys.argv[1:])
 
 # Check if file exists
-util.check_if_filespec_exists([dParsedArguments.get('fileSpec')])
+if not util.check_if_filespec_exists(dParsedArguments.get('fileSpec')):
+
+    data_integrity.failed(errorString="Please provide a valid filepath.",exitCode=2)
 
 # Check for vaalid input option
-util.check_for_valid_input_options([dParsedArguments.get('option')])
+if not util.check_for_valid_input_options([dParsedArguments.get('option')]):
+
+     data_integrity.failed(errorString="Invalid option. Program only supports option d",exitCode=2)
 
 # Check for date format and if it is valid
-util.validate_date_format(dParsedArguments['date'])
+dateValidation = util.validate_date_format(dParsedArguments['date'])
+
+if dateValidation is not None:
+
+    data_integrity.failed(errorString=dateValidation, exitCode=2)
 
 
 
