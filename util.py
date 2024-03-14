@@ -5,7 +5,7 @@ ALLOWED_OPTIONS_CONSTANT     = {'d'}
 MONTHS_WITH_30_DAYS_CONSTANT = {2,4,6,9,11}
 
 def parse_command_line_arguments(aInputArguments) -> dict:
-    # Strictly expects the format filespec -option date
+    # Strictly expects the format,  filespec -option date
 
     dParsedArguments = {}
 
@@ -17,6 +17,7 @@ def parse_command_line_arguments(aInputArguments) -> dict:
 
 
 def check_for_valid_input_options(aInputOptions) -> bool:
+    # Checks if the option provided to the program is valid and expected
 
     for option in aInputOptions:
 
@@ -46,6 +47,7 @@ def validate_date_format(date) -> bool:
     reMatch = re.match(r'^(\d{4})-(\d{2})-(\d{2})$', date)
 
     if reMatch:
+        
         year , month, day = reMatch.groups()
 
         convertedyear  = int(year)
@@ -53,7 +55,9 @@ def validate_date_format(date) -> bool:
         convertedDay   = int(day)
 
         if convertedMonth > 12 :
+            
             return "Invalid Month provided"
+        
         # Checks for month feb
         if convertedMonth == 2:
             
@@ -81,9 +85,12 @@ def validate_date_format(date) -> bool:
 
 
 def validate_utc_timestamp(timeStamp) -> bool:
+    # validates timestamp in the UTC format
 
     if re.match(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}', timeStamp):
+        
         return True
     
     else:
+        
         return False
