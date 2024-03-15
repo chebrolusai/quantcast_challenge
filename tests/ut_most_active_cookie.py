@@ -30,7 +30,7 @@ class TestMostActiveCookie(unittest.TestCase):
         print("------ Test case 2 (success) -------")
         print("# Test case 2 (success case): valid file, some invalid content")
 
-        scriptCommand = f"python3 {sys.path[0]}/../most_active_cookie.py ./tests/mock_data/invalid_format.csv -d 2018-12-08"
+        scriptCommand = f"python3 {sys.path[0]}/../most_active_cookie.py ./tests/mock_data/invalid_format.txt -d 2018-12-08"
 
         expectedOutput = "4sMM2LxV07bPJzwf\nfbcn5UAVanZf6UtG\n"
 
