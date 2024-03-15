@@ -11,25 +11,27 @@ Given a log file in the format `cookie,timestamp` , the program parses the log f
 
 ### Prerequisites
 
-- python installed
+- python3 installed
 
 ### Project Structure
 
-- <b>most_active_cookie</b> : The main python file to execute
-- <b>util</b> : A helper/utility file for the main
-- <b>data_integrity</b> : A basic file for error reporting
-- <b>tests </b>: A directory with unit tests scripts for the main file
+- <b>most_active_cookie</b> : Bash script to call the main python file
+- <b>most_active_cookie.py</b> : The main python file to execute
+- <b>util.py</b> : A helper/utility file for the main
+- <b>data_integrity.py</b> : A basic file for error reporting
+- <b>tests/</b>: A directory with unit tests scripts for the main file
+
+### Naming Convention
+
+- Array variable names start with `a<variableName>`
+- Dictionary variable names start with `d<variableName>`
+
+variables follow camel case notation.
 
 ### Usage
 
-Depending on the Operating System:
+Invoke the script like this ( ensure appropriate execute permission on the Bash script ) :
 
 ```sh
-python3 most_active_cookie.py <file_path> -d <date>
-```
-
-or
-
-```sh
-python most_active_cookie.py <file_path> -d <date>
+./most_active_cookie <file_path> -d <date>
 ```
